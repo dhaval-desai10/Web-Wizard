@@ -35,7 +35,7 @@ A comprehensive PHP-based student portal system with admin and student access, f
 
 ## 🎥 Project Demo
 
-[![Watch the Demo Video](./images/demo-thumbnail.png)](https://drive.google.com/file/d/1NulzpwqEcAbQ2WC47GZn_a3S5ql-BbnJ/view?usp=drive_link)
+## [Watch the Demo Video](https://drive.google.com/file/d/1NulzpwqEcAbQ2WC47GZn_a3S5ql-BbnJ/view?usp=drive_link)
 
 > 🎬 Click the image above to watch the full project demo video on Google Drive.
 
