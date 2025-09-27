@@ -33,6 +33,12 @@ A comprehensive PHP-based student portal system with admin and student access, f
 - **Web Browser** (Chrome, Firefox, Safari, Edge)
 - **5MB** minimum free disk space
 
+## 🎥 Project Demo
+
+[![Watch the Demo Video](./images/demo-thumbnail.png)](https://drive.google.com/file/d/1NulzpwqEcAbQ2WC47GZn_a3S5ql-BbnJ/view?usp=drive_link)
+
+> 🎬 Click the image above to watch the full project demo video on Google Drive.
+
 ## Installation Instructions
 
 ### Step 1: Setup XAMPP
