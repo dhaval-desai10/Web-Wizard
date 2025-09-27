@@ -14,6 +14,11 @@ function validateEmail($email) {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
+// Validate password (minimum 6 characters)
+function validatePassword($password) {
+    return strlen($password) >= 6;
+}
+
 // Validate phone number (Indian format)
 function validatePhone($phone) {
     return preg_match('/^[6-9]\d{9}$/', $phone);

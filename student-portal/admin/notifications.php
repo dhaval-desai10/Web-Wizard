@@ -213,7 +213,7 @@ if (isset($_GET['success'])) {
                     </svg>
                     Students
                 </a>
-                <a href="notifications.php" class="inline-flex items-center px-1 pt-1 pb-4 border-b-2 border-yellow-500 text-sm font-medium text-yellow-600">
+                <a href="notifications.php" class="inline-flex items-center px-1 pt-1 pb-4 border-b-2 border-green-500 text-sm font-medium text-green-600">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5-5-5 5h5zm0 0v-5"></path>
                     </svg>
@@ -234,13 +234,7 @@ if (isset($_GET['success'])) {
             </div>
         </div>
     </div>
-                <a href="students.php">Manage Students</a>
-                <a href="notifications.php">Notifications</a>
-                <a href="messages.php">Messages</a>
-                <a href="../logout.php">Logout</a>
-            </div>
-        </div>
-    </div>
+               
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Alert Messages -->
@@ -277,7 +271,7 @@ if (isset($_GET['success'])) {
         <?php if ($action === 'create'): ?>
             <!-- Create Notification Form -->
             <div class="bg-white shadow-lg rounded-xl overflow-hidden animate-slide-up">
-                <div class="px-6 py-4 bg-gradient-to-r from-yellow-500 to-orange-500">
+                <div class="px-6 py-4 bg-gradient-to-r from-green-500 to-emerald-500">
                     <h2 class="text-xl font-semibold text-white">Send New Notification</h2>
                 </div>
                 
@@ -292,7 +286,7 @@ if (isset($_GET['success'])) {
                             name="title" 
                             required
                             value="<?php echo isset($_POST['title']) ? htmlspecialchars($_POST['title']) : ''; ?>"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-200"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
                             placeholder="Enter notification title"
                         >
                     </div>
@@ -304,7 +298,7 @@ if (isset($_GET['success'])) {
                         <select 
                             id="department_id" 
                             name="department_id" 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-200"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
                         >
                             <option value="">All Departments</option>
                             <?php foreach ($departments as $dept): ?>
@@ -326,7 +320,7 @@ if (isset($_GET['success'])) {
                             name="message" 
                             rows="6" 
                             required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-200"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
                             placeholder="Enter your notification message here..."
                         ><?php echo isset($_POST['message']) ? htmlspecialchars($_POST['message']) : ''; ?></textarea>
                     </div>
@@ -341,7 +335,7 @@ if (isset($_GET['success'])) {
                                     <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                                 </svg>
                                 <div class="flex text-sm text-gray-600">
-                                    <label for="attachment" class="relative cursor-pointer bg-white rounded-md font-medium text-yellow-600 hover:text-yellow-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-yellow-500">
+                                    <label for="attachment" class="relative cursor-pointer bg-white rounded-md font-medium text-green-600 hover:text-green-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-green-500">
                                         <span>Upload a file</span>
                                         <input 
                                             type="file" 
@@ -362,7 +356,7 @@ if (isset($_GET['success'])) {
                     <div class="flex justify-center space-x-4">
                         <button 
                             type="submit" 
-                            class="px-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold rounded-lg hover:from-yellow-600 hover:to-orange-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200"
+                            class="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-lg hover:from-green-600 hover:to-emerald-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200"
                         >
                             <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5-5-5 5h5zm0 0v-5"></path>
@@ -389,7 +383,7 @@ if (isset($_GET['success'])) {
                     <div class="mt-4 sm:mt-0">
                         <a 
                             href="notifications.php?action=create" 
-                            class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold rounded-lg hover:from-yellow-600 hover:to-orange-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200"
+                            class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-lg hover:from-green-600 hover:to-emerald-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200"
                         >
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
@@ -410,7 +404,7 @@ if (isset($_GET['success'])) {
                         <p class="text-gray-600 mb-6">Start keeping your students informed by sending your first notification.</p>
                         <a 
                             href="notifications.php?action=create" 
-                            class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold rounded-lg hover:from-yellow-600 hover:to-orange-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200"
+                            class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-lg hover:from-green-600 hover:to-emerald-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200"
                         >
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5-5-5 5h5zm0 0v-5"></path>
@@ -419,14 +413,11 @@ if (isset($_GET['success'])) {
                         </a>
                     </div>
                 </div>
-                        </div>
-                    </div>
-                </div>
             <?php else: ?>
                 <div class="space-y-6">
                     <?php foreach ($notifications as $notification): ?>
                         <div class="bg-white shadow-lg rounded-xl overflow-hidden animate-fade-in hover:shadow-xl transition-shadow duration-300">
-                            <div class="bg-gradient-to-r from-yellow-500 to-orange-500 px-6 py-4">
+                            <div class="bg-gradient-to-r from-green-500 to-emerald-500 px-6 py-4">
                                 <div class="flex items-center justify-between">
                                     <h3 class="text-lg font-semibold text-white">
                                         <?php echo htmlspecialchars($notification['title']); ?>
@@ -507,17 +498,7 @@ if (isset($_GET['success'])) {
                         </div>
                     <?php endforeach; ?>
                 </div>
-            <?php else: ?>
-                <div class="text-center py-12">
-                    <div class="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-medium text-gray-900 mb-2">No notifications yet</h3>
-                    <p class="text-gray-500 mb-6">Start by creating your first notification above.</p>
-                </div>
+               
             <?php endif; ?>
         <?php endif; ?>
 

@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $firstName = sanitizeInput($_POST['first_name']);
     $lastName = sanitizeInput($_POST['last_name']);
     $email = sanitizeInput($_POST['email']);
+    $studentId = sanitizeInput($_POST['student_id']);
     $password = sanitizeInput($_POST['password']);
     $confirmPassword = sanitizeInput($_POST['confirm_password']);
     $departmentId = sanitizeInput($_POST['department_id']);
@@ -31,6 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($lastName)) $errors[] = 'Last name is required';
     if (empty($email)) $errors[] = 'Email is required';
     elseif (!validateEmail($email)) $errors[] = 'Invalid email format';
+    if (empty($studentId)) $errors[] = 'Student ID is required';
+    elseif (!validateStudentId($studentId)) $errors[] = 'Invalid student ID format';
     if (empty($password)) $errors[] = 'Password is required';
     elseif (!validatePassword($password)) $errors[] = 'Password must be at least 6 characters';
     if (empty($confirmPassword)) $errors[] = 'Please confirm your password';
@@ -47,42 +50,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->fetch()) {
                 $error = 'Email address is already registered';
             } else {
-                // Generate student ID based on department and year
-                $year = date('Y');
-                $deptCode = '';
-                foreach ($departments as $dept) {
-                    if ($dept['id'] == $departmentId) {
-                        $deptCode = strtoupper(substr($dept['name'], 0, 3));
-                        break;
-                    }
-                }
-                
-                // Find next available student ID
-                $stmt = $pdo->prepare("SELECT student_id FROM students WHERE student_id LIKE ? ORDER BY student_id DESC LIMIT 1");
-                $stmt->execute([$year . $deptCode . '%']);
-                $lastStudent = $stmt->fetch();
-                
-                if ($lastStudent) {
-                    $lastNumber = (int)substr($lastStudent['student_id'], -4);
-                    $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
+                // Check if student ID already exists
+                $stmt = $pdo->prepare("SELECT id FROM students WHERE student_id = ?");
+                $stmt->execute([$studentId]);
+                if ($stmt->fetch()) {
+                    $error = 'Student ID is already registered';
                 } else {
-                    $newNumber = '0001';
+                    // Hash password
+                    $hashedPassword = hashPassword($password);
+                    
+                    // Insert student record with user-provided student ID
+                    $stmt = $pdo->prepare("INSERT INTO students (student_id, first_name, last_name, email, password, department_id, created_at) VALUES (?, ?, ?, ?, ?, ?, NOW())");
+                    $stmt->execute([$studentId, $firstName, $lastName, $email, $hashedPassword, $departmentId]);
+                    
+                    $success = "Registration successful! Your Student ID is: <strong>$studentId</strong><br>Please complete your profile after logging in.";
+                    logActivity("New student registered: $studentId");
+                    
+                    // Clear form data after successful registration
+                    $_POST = [];
                 }
-                
-                $studentId = $year . $deptCode . $newNumber;
-                
-                // Hash password
-                $hashedPassword = hashPassword($password);
-                
-                // Insert student record with minimal data
-                $stmt = $pdo->prepare("INSERT INTO students (student_id, first_name, last_name, email, password, department_id, created_at) VALUES (?, ?, ?, ?, ?, ?, NOW())");
-                $stmt->execute([$studentId, $firstName, $lastName, $email, $hashedPassword, $departmentId]);
-                
-                $success = "Registration successful! Your Student ID is: <strong>$studentId</strong><br>Please complete your profile after logging in.";
-                logActivity("New student registered: $studentId");
-                
-                // Clear form data after successful registration
-                $_POST = [];
             }
         } catch (PDOException $e) {
             $error = 'Registration failed. Please try again.';
@@ -244,6 +230,30 @@ if (isLoggedIn()) {
                         <div id="email_error" class="text-red-300 text-sm hidden"></div>
                     </div>
 
+                    <!-- Student ID Field -->
+                    <div class="space-y-2">
+                        <label for="student_id" class="block text-sm font-medium text-white">
+                            Student ID
+                        </label>
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                name="student_id" 
+                                id="student_id" 
+                                required
+                                value="<?php echo isset($_POST['student_id']) ? htmlspecialchars($_POST['student_id']) : ''; ?>"
+                                class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-xl text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:border-transparent backdrop-blur-sm transition-all duration-300"
+                                placeholder="Enter your Student ID"
+                            >
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <svg class="w-5 h-5 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V4a2 2 0 012-2h2a2 2 0 012 2v2m-4 0a2 2 0 012 2h2a2 2 0 01-2 2h-2a2 2 0 01-2-2m-4 0H9m4 0h2m-6 0v6"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div id="student_id_error" class="text-red-300 text-sm hidden"></div>
+                    </div>
+
                     <!-- Department Field -->
                     <div class="space-y-2">
                         <label for="department_id" class="block text-sm font-medium text-white">
@@ -388,6 +398,17 @@ if (isLoggedIn()) {
                 isValid = false;
             } else if (!emailRegex.test(email)) {
                 showError('email_error', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Student ID validation
+            const studentId = document.getElementById('student_id').value.trim();
+            const studentIdRegex = /^[A-Za-z0-9]{6,20}$/;
+            if (!studentId) {
+                showError('student_id_error', 'Student ID is required');
+                isValid = false;
+            } else if (!studentIdRegex.test(studentId)) {
+                showError('student_id_error', 'Student ID must be 6-20 alphanumeric characters');
                 isValid = false;
             }
             
