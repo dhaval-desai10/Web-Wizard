@@ -230,7 +230,7 @@ try {
                                                 Recent
                                             </span>
                                         <?php endif; ?>
-                                        <?php if (!empty($notification['attachment'])): ?>
+                                        <?php if (!empty($notification['file_path'])): ?>
                                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
                                                 <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
@@ -244,12 +244,12 @@ try {
                                 <!-- Notification Content -->
                                 <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg p-4 mb-4 border-l-4 border-orange-400">
                                     <div class="text-gray-800 leading-relaxed">
-                                        <?php echo nl2br(htmlspecialchars($notification['content'])); ?>
+                                        <?php echo nl2br(htmlspecialchars($notification['message'])); ?>
                                     </div>
                                 </div>
 
                                 <!-- Attachment Section -->
-                                <?php if (!empty($notification['attachment'])): ?>
+                                <?php if (!empty($notification['file_path'])): ?>
                                     <div class="border-t border-gray-200 pt-4">
                                         <div class="bg-orange-50 rounded-lg p-4">
                                             <div class="flex items-center justify-between">
@@ -261,12 +261,12 @@ try {
                                                     </div>
                                                     <div class="ml-3">
                                                         <p class="text-sm font-medium text-orange-900">
-                                                            <?php echo htmlspecialchars($notification['attachment']); ?>
+                                                            <?php echo htmlspecialchars(basename($notification['file_path'])); ?>
                                                         </p>
                                                         <p class="text-xs text-orange-600">Click to download attachment</p>
                                                     </div>
                                                 </div>
-                                                <a href="../uploads/<?php echo htmlspecialchars($notification['attachment']); ?>" 
+                                                <a href="../uploads/<?php echo htmlspecialchars($notification['file_path']); ?>" 
                                                    download
                                                    class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-orange-700 bg-orange-100 hover:bg-orange-200 transition-all duration-200 shadow-sm hover:shadow-md">
                                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

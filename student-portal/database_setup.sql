@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS students (
     gender ENUM('Male', 'Female', 'Other'),
     address TEXT,
     department_id INT,
+    profile_image VARCHAR(255),
     
     -- Father details
     father_name VARCHAR(100),
