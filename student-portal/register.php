@@ -125,29 +125,29 @@ if (isLoggedIn()) {
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="font-inter min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-800">
-    <!-- Background Elements -->
-    <div class="fixed inset-0 overflow-hidden">
-        <div class="absolute -top-10 -right-10 w-72 h-72 bg-white opacity-10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-white opacity-10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl"></div>
+<body class="font-inter min-h-screen bg-gray-50">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 bg-gradient-to-br from-red-50 via-pink-50 to-rose-50">
+        <div class="absolute inset-0 bg-white bg-opacity-80"></div>
+        <div class="absolute -top-10 -right-10 w-72 h-72 bg-gradient-to-r from-red-400 to-pink-400 opacity-10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-gradient-to-r from-pink-400 to-rose-400 opacity-10 rounded-full blur-3xl"></div>
     </div>
     
     <div class="relative z-10 min-h-screen flex items-center justify-center p-4">
-        <div class="w-full max-w-md">
+        <div class="w-full max-w-lg">
             <!-- Logo/Brand Section -->
             <div class="text-center mb-8 animate-fade-in">
-                <div class="mx-auto w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mb-4 backdrop-blur-sm">
+                <div class="mx-auto w-16 h-16 bg-gradient-to-r from-red-600 to-pink-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
                     </svg>
                 </div>
-                <h1 class="text-3xl font-bold text-white mb-2">Create Account</h1>
-                <p class="text-indigo-100">Join our student portal today</p>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Create Account</h1>
+                <p class="text-gray-600">Join our student portal today</p>
             </div>
 
             <!-- Registration Form -->
-            <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-3xl shadow-2xl p-8 animate-slide-up">
+            <div class="bg-white shadow-lg rounded-2xl p-8 animate-slide-up">
                 <form method="POST" action="" class="space-y-6" onsubmit="return validateSimpleRegistration()">
                     <?php if ($error): ?>
                         <div class="bg-red-500 bg-opacity-10 border border-red-500 border-opacity-20 text-red-100 px-4 py-3 rounded-xl backdrop-blur-sm">
@@ -174,7 +174,7 @@ if (isLoggedIn()) {
                     <!-- Name Fields -->
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-2">
-                            <label for="first_name" class="block text-sm font-medium text-white">
+                            <label for="first_name" class="block text-sm font-medium text-gray-700">
                                 First Name
                             </label>
                             <input 
@@ -183,14 +183,14 @@ if (isLoggedIn()) {
                                 id="first_name" 
                                 required
                                 value="<?php echo isset($_POST['first_name']) ? htmlspecialchars($_POST['first_name']) : ''; ?>"
-                                class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-xl text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:border-transparent backdrop-blur-sm transition-all duration-300"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
                                 placeholder="John"
                             >
-                            <div id="first_name_error" class="text-red-300 text-sm hidden"></div>
+                            <div id="first_name_error" class="text-red-500 text-sm hidden"></div>
                         </div>
 
                         <div class="space-y-2">
-                            <label for="last_name" class="block text-sm font-medium text-white">
+                            <label for="last_name" class="block text-sm font-medium text-gray-700">
                                 Last Name
                             </label>
                             <input 
@@ -199,16 +199,16 @@ if (isLoggedIn()) {
                                 id="last_name" 
                                 required
                                 value="<?php echo isset($_POST['last_name']) ? htmlspecialchars($_POST['last_name']) : ''; ?>"
-                                class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-xl text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:border-transparent backdrop-blur-sm transition-all duration-300"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
                                 placeholder="Doe"
                             >
-                            <div id="last_name_error" class="text-red-300 text-sm hidden"></div>
+                            <div id="last_name_error" class="text-red-500 text-sm hidden"></div>
                         </div>
                     </div>
 
                     <!-- Email Field -->
                     <div class="space-y-2">
-                        <label for="email" class="block text-sm font-medium text-white">
+                        <label for="email" class="block text-sm font-medium text-gray-700">
                             Email Address
                         </label>
                         <div class="relative">
@@ -218,21 +218,21 @@ if (isLoggedIn()) {
                                 id="email" 
                                 required
                                 value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>"
-                                class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-xl text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:border-transparent backdrop-blur-sm transition-all duration-300"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
                                 placeholder="john.doe@email.com"
                             >
                             <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                <svg class="w-5 h-5 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
                                 </svg>
                             </div>
                         </div>
-                        <div id="email_error" class="text-red-300 text-sm hidden"></div>
+                        <div id="email_error" class="text-red-500 text-sm hidden"></div>
                     </div>
 
                     <!-- Student ID Field -->
                     <div class="space-y-2">
-                        <label for="student_id" class="block text-sm font-medium text-white">
+                        <label for="student_id" class="block text-sm font-medium text-gray-700">
                             Student ID
                         </label>
                         <div class="relative">
@@ -242,21 +242,21 @@ if (isLoggedIn()) {
                                 id="student_id" 
                                 required
                                 value="<?php echo isset($_POST['student_id']) ? htmlspecialchars($_POST['student_id']) : ''; ?>"
-                                class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-xl text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:border-transparent backdrop-blur-sm transition-all duration-300"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
                                 placeholder="Enter your Student ID"
                             >
                             <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                <svg class="w-5 h-5 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V4a2 2 0 012-2h2a2 2 0 012 2v2m-4 0a2 2 0 012 2h2a2 2 0 01-2 2h-2a2 2 0 01-2-2m-4 0H9m4 0h2m-6 0v6"></path>
                                 </svg>
                             </div>
                         </div>
-                        <div id="student_id_error" class="text-red-300 text-sm hidden"></div>
+                        <div id="student_id_error" class="text-red-500 text-sm hidden"></div>
                     </div>
 
                     <!-- Department Field -->
                     <div class="space-y-2">
-                        <label for="department_id" class="block text-sm font-medium text-white">
+                        <label for="department_id" class="block text-sm font-medium text-gray-700">
                             Department
                         </label>
                         <div class="relative">
@@ -264,30 +264,30 @@ if (isLoggedIn()) {
                                 name="department_id" 
                                 id="department_id" 
                                 required
-                                class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:border-transparent backdrop-blur-sm transition-all duration-300 appearance-none"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300 appearance-none"
                             >
-                                <option value="" class="bg-gray-800 text-white">Select Department</option>
+                                <option value="" class="text-gray-500">Select Department</option>
                                 <?php foreach ($departments as $dept): ?>
                                     <option value="<?php echo $dept['id']; ?>" 
-                                            class="bg-gray-800 text-white"
+                                            class="text-gray-900"
                                             <?php echo (isset($_POST['department_id']) && $_POST['department_id'] == $dept['id']) ? 'selected' : ''; ?>>
                                         <?php echo htmlspecialchars($dept['name']); ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
                             <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                <svg class="w-5 h-5 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                 </svg>
                             </div>
                         </div>
-                        <div id="department_error" class="text-red-300 text-sm hidden"></div>
+                        <div id="department_error" class="text-red-500 text-sm hidden"></div>
                     </div>
 
                     <!-- Password Fields -->
                     <div class="grid grid-cols-1 gap-4">
                         <div class="space-y-2">
-                            <label for="password" class="block text-sm font-medium text-white">
+                            <label for="password" class="block text-sm font-medium text-gray-700">
                                 Password
                             </label>
                             <div class="relative">
@@ -296,20 +296,20 @@ if (isLoggedIn()) {
                                     name="password" 
                                     id="password" 
                                     required
-                                    class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-xl text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:border-transparent backdrop-blur-sm transition-all duration-300"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
                                     placeholder="Minimum 6 characters"
                                 >
                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                    <svg class="w-5 h-5 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 0h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                                     </svg>
                                 </div>
                             </div>
-                            <div id="password_error" class="text-red-300 text-sm hidden"></div>
+                            <div id="password_error" class="text-red-500 text-sm hidden"></div>
                         </div>
 
                         <div class="space-y-2">
-                            <label for="confirm_password" class="block text-sm font-medium text-white">
+                            <label for="confirm_password" class="block text-sm font-medium text-gray-700">
                                 Confirm Password
                             </label>
                             <div class="relative">
@@ -318,23 +318,23 @@ if (isLoggedIn()) {
                                     name="confirm_password" 
                                     id="confirm_password" 
                                     required
-                                    class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-xl text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:border-transparent backdrop-blur-sm transition-all duration-300"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
                                     placeholder="Repeat password"
                                 >
                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                    <svg class="w-5 h-5 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
                                 </div>
                             </div>
-                            <div id="confirm_password_error" class="text-red-300 text-sm hidden"></div>
+                            <div id="confirm_password_error" class="text-red-500 text-sm hidden"></div>
                         </div>
                     </div>
 
                     <!-- Register Button -->
                     <button 
                         type="submit"
-                        class="w-full bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 backdrop-blur-sm"
+                        class="w-full bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 shadow-lg"
                     >
                         <span class="flex items-center justify-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -347,9 +347,9 @@ if (isLoggedIn()) {
 
                 <!-- Login Link -->
                 <div class="mt-8 text-center">
-                    <p class="text-indigo-100">
+                    <p class="text-gray-600">
                         Already have an account? 
-                        <a href="index.php" class="text-white hover:text-indigo-200 font-semibold transition-colors duration-300 underline underline-offset-2">
+                        <a href="index.php" class="text-red-600 hover:text-red-700 font-semibold transition-colors duration-300">
                             Sign In
                         </a>
                     </p>
@@ -357,14 +357,14 @@ if (isLoggedIn()) {
             </div>
 
             <!-- Info Box -->
-            <div class="mt-6 bg-black bg-opacity-20 backdrop-blur-md rounded-2xl p-6 animate-fade-in">
-                <h3 class="text-white font-semibold mb-3 flex items-center">
+            <div class="mt-6 bg-white bg-opacity-60 backdrop-blur-md rounded-2xl p-6 animate-fade-in border border-gray-200">
+                <h3 class="text-gray-800 font-semibold mb-3 flex items-center">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     Quick Registration
                 </h3>
-                <p class="text-sm text-indigo-100">
+                <p class="text-sm text-gray-600">
                     Just provide your basic information to get started. You can complete your full profile after logging in.
                 </p>
             </div>

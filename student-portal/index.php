@@ -129,9 +129,6 @@ if (isLoggedIn()) {
                             '0%': { transform: 'translateY(20px)', opacity: '0' },
                             '100%': { transform: 'translateY(0)', opacity: '1' },
                         }
-                    },
-                    backdropBlur: {
-                        xs: '2px',
                     }
                 }
             }
@@ -139,29 +136,29 @@ if (isLoggedIn()) {
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="font-inter min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-800">
-    <!-- Background Elements -->
-    <div class="fixed inset-0 overflow-hidden">
-        <div class="absolute -top-10 -right-10 w-72 h-72 bg-white opacity-10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-white opacity-10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl"></div>
+<body class="font-inter min-h-screen bg-gray-50">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 bg-gradient-to-br from-red-50 via-pink-50 to-rose-50">
+        <div class="absolute inset-0 bg-white bg-opacity-80"></div>
+        <div class="absolute -top-10 -right-10 w-72 h-72 bg-gradient-to-r from-red-400 to-pink-400 opacity-10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-gradient-to-r from-pink-400 to-rose-400 opacity-10 rounded-full blur-3xl"></div>
     </div>
     
     <div class="relative z-10 min-h-screen flex items-center justify-center p-4">
         <div class="w-full max-w-md">
             <!-- Logo/Brand Section -->
             <div class="text-center mb-8 animate-fade-in">
-                <div class="mx-auto w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mb-4 backdrop-blur-sm">
+                <div class="mx-auto w-16 h-16 bg-gradient-to-r from-red-600 to-pink-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                     </svg>
                 </div>
-                <h1 class="text-3xl font-bold text-white mb-2">Student Portal</h1>
-                <p class="text-indigo-100">Welcome back! Please sign in to continue.</p>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Student Portal</h1>
+                <p class="text-gray-600">Welcome back! Please sign in to continue.</p>
             </div>
 
             <!-- Login Form -->
-            <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-3xl shadow-2xl p-8 animate-slide-up">
+            <div class="bg-white shadow-lg rounded-2xl p-8 animate-slide-up">
                 <form method="POST" onsubmit="return validateLogin()" class="space-y-6">
                     <?php if ($error): ?>
                         <div class="bg-red-500 bg-opacity-10 border border-red-500 border-opacity-20 text-red-100 px-4 py-3 rounded-xl backdrop-blur-sm">
@@ -187,7 +184,7 @@ if (isLoggedIn()) {
 
                     <!-- Student ID Field -->
                     <div class="space-y-2">
-                        <label for="student_id" class="block text-sm font-medium text-white">
+                        <label for="student_id" class="block text-sm font-medium text-gray-700">
                             Student ID or Admin Username
                         </label>
                         <div class="relative">
@@ -197,21 +194,21 @@ if (isLoggedIn()) {
                                 id="student_id" 
                                 required
                                 value="<?php echo $rememberedStudentId ? htmlspecialchars($rememberedStudentId) : ''; ?>"
-                                class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-xl text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:border-transparent backdrop-blur-sm transition-all duration-300"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
                                 placeholder="Enter Student ID or 'admin'"
                             >
                             <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                <svg class="w-5 h-5 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                                 </svg>
                             </div>
                         </div>
-                        <div id="student_id_error" class="text-red-300 text-sm hidden"></div>
+                        <div id="student_id_error" class="text-red-500 text-sm hidden"></div>
                     </div>
 
                     <!-- Password Field -->
                     <div class="space-y-2">
-                        <label for="password" class="block text-sm font-medium text-white">
+                        <label for="password" class="block text-sm font-medium text-gray-700">
                             Password
                         </label>
                         <div class="relative">
@@ -220,16 +217,16 @@ if (isLoggedIn()) {
                                 name="password" 
                                 id="password" 
                                 required
-                                class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-20 rounded-xl text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:border-transparent backdrop-blur-sm transition-all duration-300"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
                                 placeholder="Enter your password"
                             >
                             <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                <svg class="w-5 h-5 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 0h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                                 </svg>
                             </div>
                         </div>
-                        <div id="password_error" class="text-red-300 text-sm hidden"></div>
+                        <div id="password_error" class="text-red-500 text-sm hidden"></div>
                     </div>
 
                     <!-- Remember Me -->
@@ -240,14 +237,14 @@ if (isLoggedIn()) {
                                 name="remember_me" 
                                 type="checkbox" 
                                 <?php echo $rememberedStudentId ? 'checked' : ''; ?>
-                                class="w-4 h-4 text-indigo-600 bg-white bg-opacity-20 border-white border-opacity-30 rounded focus:ring-indigo-500 focus:ring-2"
+                                class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 focus:ring-2"
                             >
-                            <label for="remember_me" class="ml-2 text-sm text-indigo-100">
+                            <label for="remember_me" class="ml-2 text-sm text-gray-600">
                                 Remember me
                             </label>
                         </div>
                         <div class="text-sm">
-                            <a href="#" class="text-indigo-200 hover:text-white transition-colors duration-300">
+                            <a href="#" class="text-red-600 hover:text-red-700 font-medium transition-colors duration-300">
                                 Forgot password?
                             </a>
                         </div>
@@ -256,7 +253,7 @@ if (isLoggedIn()) {
                     <!-- Login Button -->
                     <button 
                         type="submit"
-                        class="w-full bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 backdrop-blur-sm"
+                        class="w-full bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 shadow-lg"
                     >
                         <span class="flex items-center justify-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -269,34 +266,16 @@ if (isLoggedIn()) {
 
                 <!-- Register Link -->
                 <div class="mt-8 text-center">
-                    <p class="text-indigo-100">
+                    <p class="text-gray-600">
                         Don't have an account? 
-                        <a href="register.php" class="text-white hover:text-indigo-200 font-semibold transition-colors duration-300 underline underline-offset-2">
+                        <a href="register.php" class="text-red-600 hover:text-red-700 font-semibold transition-colors duration-300">
                             Create Account
                         </a>
                     </p>
                 </div>
             </div>
 
-            <!-- Demo Credentials -->
-            <div class="mt-6 bg-black bg-opacity-20 backdrop-blur-md rounded-2xl p-6 animate-fade-in">
-                <h3 class="text-white font-semibold mb-3 flex items-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    Demo Credentials
-                </h3>
-                <div class="space-y-2 text-sm text-indigo-100">
-                    <div class="flex justify-between">
-                        <span>Admin:</span>
-                        <span class="text-white font-mono">admin / admin123</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span>Student:</span>
-                        <span class="text-white font-mono">Register new account</span>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 
